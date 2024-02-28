@@ -35,8 +35,8 @@
                                         <?= $value['Description'] ?>
                                     </td>
                                     <td class="buttons">
-                                        <button>Удалить</button>
-                                        <button>Редактировать</button>
+                                        <button class="delete-button">Удалить</button>
+                                        <button class="edit-button">Редактировать</button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -61,9 +61,20 @@
 
     </div>
     <div class="modal">
-        <form action="">
+        <div class="content-center">
+            <div class="login-form">
+                <form action="form.php" method="post">
+                    <label for="name">ФИО:</label>
+                    <input type="name" id="name" name="name" placeholder="Введите ФИО">
+                    <label for="number">Телефон:</label>
+                    <input type="number" id="number" name="number" placeholder="+7(9XX) XXX XX-XX">
+                    <label for="description">Кем приходится:</label>
+                    <input type="description" id="description" name="description" placeholder="Кем приходится">
+                    <button class="submite-button">Записать</button>
+                </form>
+            </div>
+        </div>
 
-        </form>
     </div>
     <script src="js/main.js"></script>
 </body>
