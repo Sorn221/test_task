@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;  
+    font-size: 13pt;
+    padding: 5px;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 0 auto; 
+}
+
+TD{
+    padding: 5px; 
+    border: 1px solid black;
+    min-width: 200px;
+}
+.buttons{
+    display:grid;
+    margin: 0 auto;
+}
+.add-button{
+    min-width: 100px;
+    margin: 10px 0px 0px 500px;
+}
+
+.table-head{
+    background: cadetblue;
+}
+.modal,
+.modal-background{
+    display: none;
+    position: absolute;
+}
+
+.modal-background{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 1000;
+}
