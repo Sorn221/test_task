@@ -74,7 +74,8 @@ require_once('init.php');
         </div>
 
     </div>
-    <script src="js/main.js"></script>
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="ajax/ajax.js"></script>
 </body>
 
 </html>

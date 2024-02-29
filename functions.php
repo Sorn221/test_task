@@ -59,6 +59,13 @@ function get_directory_by_id(mysqli $con, int $id)
     return mysqli_fetch_assoc(mysqli_stmt_get_result($prepare_values)) ?? [];
 }
 
+/**
+ * Удаляет запись из базы данных по ее id
+ *
+ * @param mysqli $con соединение с базой данных
+ * @param string $id id записи
+ *
+ */
 function delete_row($id, $con)
 {
     $sql = "DELETE FROM Directory 
@@ -69,3 +76,31 @@ function delete_row($id, $con)
     mysqli_query($con, $sql);
 }
 
+/**
+ * Изменяет запись в бд
+ * 
+ * @param mysqli $con подключение к базе
+ * @param int $id имя
+ * @param string $name имя
+ * @param string $number номер телефона
+ * @param string $description кем приходится
+ *
+ * @return int id добавленной записи
+ */
+function update_directory(int $id, string $name, string $number, string $description, mysqli $con): int
+{
+    $sql = "UPDATE Directory
+            SET Name='?', PhoneNumber ='?', Description = '?'
+            WHERE ID = ?;";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sssi',
+        $name,
+        $number,
+        $description,
+        $id
+    );
+    mysqli_stmt_execute($stmt);
+    return $con->insert_id;
+}
