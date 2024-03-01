@@ -1,7 +1,9 @@
 <?php
-require_once('helpers.php');
 require_once('functions.php');
 require_once('init.php');
+if ($con->connect_error) {
+    die("Ошибка соединения: " . $con->connect_error);
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -11,6 +13,7 @@ require_once('init.php');
     <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <title>Test</title>
 </head>
@@ -41,14 +44,14 @@ require_once('init.php');
                                 <?= $value['Description'] ?>
                             </td>
                             <td class="actions">
-                                <button class="delete-button">Удалить</button>
+                                <button class="delete-button" data-id=<?= $value['ID'] ?>>Удалить</button>
                                 <button class="edit-button">Редактировать</button>
                             </td>
                         </tr>
                     <?php endforeach ?>
                 <?php else: ?>
                     <tr>
-                        <td>Пока что пусто</td>
+                        Пока что пусто
                     </tr>
                 <?php endif ?>
             </tbody>
@@ -74,7 +77,6 @@ require_once('init.php');
         </div>
 
     </div>
-    <script src="js/jquery-3.6.3.js"></script>
     <script src="ajax/ajax.js"></script>
 </body>
 
