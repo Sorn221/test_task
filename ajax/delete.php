@@ -4,5 +4,6 @@ require_once('init.php');
 
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    delete_row($id, $con);
+    $sql = "DELETE FROM Directory WHERE ID = $id";
+    $con->query($sql);
 }

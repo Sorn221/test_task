@@ -68,12 +68,12 @@ function get_directory_by_id(mysqli $con, int $id)
  */
 function delete_row($id, $con)
 {
-    $sql = "DELETE FROM Directory 
-            WHERE ID = ?";
-    $prepare_values = mysqli_prepare($con, $sql);
-    mysqli_stmt_bind_param($prepare_values, 'i', $id);
-    mysqli_stmt_execute($prepare_values);
-    mysqli_query($con, $sql);
+    $sql = "DELETE FROM Directory WHERE ID = $id";
+    if ($con->query($sql) === TRUE) {
+        echo "Запись успешно удалена";
+    } else {
+        echo "Ошибка при удалении записи: " . $con->error;
+    }
 }
 
 /**

@@ -77,7 +77,10 @@ if ($con->connect_error) {
         </div>
 
     </div>
-    <script src="ajax/ajax.js"></script>
+
+    <script>
+
+    </script>
 </body>
 
 </html>

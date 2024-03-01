@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // formData или по name собираешь name
         var type = "add";
         $.ajax({
-            url: '../ajax/index.php',         /* Куда пойдет запрос */
+            url: 'ajax/add.php',         /* Куда пойдет запрос */
             method: 'post',             /* Метод передачи (post или get) */
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: {type: type},
@@ -28,28 +28,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     // Удаление
+   
     document.querySelector('.delete-button').addEventListener('click', (e) => {
-        
         var id = $(this).data('id');
-        var type = "delete";
-            $.ajax({
-                url: '/ajax/delete.php',
-                type: 'POST',
-                data: {id: id, type: type},
-                success: function() {
-                    alert('Запись успешно удалена');
-                    $(this).closest('tr').remove();
-                }
-            });
+        $.ajax({
+            url: 'ajax/delete.php',
+            type: 'POST',
+            data: { id: id },
+            success: function () {
+                alert('Запись успешно удалена');
+                $(this).closest('tr').remove();
+            }
+        });
     });
-
     // Редактировать
     document.querySelector('.submite-button').addEventListener('click', (e) => {
         // formData или по name собираешь name
         // var data = name, number, description + type = 'edit'
         var type = "edit";
         $.ajax({
-            url: '/ajax/index.php',         /* Куда пойдет запрос */
+            url: '/ajax/edit.php',         /* Куда пойдет запрос */
             method: 'post',             /* Метод передачи (post или get) */
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: {type: type},
