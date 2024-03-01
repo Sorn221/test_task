@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // formData или по name собираешь name
         var type = "add";
         $.ajax({
-            url: '/ajax/index.php',         /* Куда пойдет запрос */
+            url: '../ajax/index.php',         /* Куда пойдет запрос */
             method: 'post',             /* Метод передачи (post или get) */
             dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: {type: type},
