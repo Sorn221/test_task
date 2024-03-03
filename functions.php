@@ -1,11 +1,4 @@
 <?php
-/**
- * Возвращает список записанных значений
- * 
- * @param mysqli $con подключение к базе
- * 
- * @return array массив значений из бд
- */
 function get_values($con): array
 {
 
@@ -13,40 +6,17 @@ function get_values($con): array
 
     return mysqli_fetch_all(mysqli_query($con, $sql), MYSQLI_ASSOC);
 }
-/**
- * Добавляет запись в бд
- * 
- * @param mysqli $con подключение к базе
- * @param string $name имя
- * @param string $number номер телефона
- * @param string $description кем приходится
- *
- * @return int id добавленной записи
- */
-function add_directory(string $name, string $number, string $description, mysqli $con): int
+
+function delete_row($id, $con)
 {
-    $sql = "INSERT INTO Directory(`Name`, `PhoneNumber`, `Description`)
-            VALUES(?,?,?);";
-    $stmt = mysqli_prepare($con, $sql);
-    mysqli_stmt_bind_param(
-        $stmt,
-        'sss',
-        $name,
-        $number,
-        $description,
-    );
-    mysqli_stmt_execute($stmt);
-    return $con->insert_id;
+    $sql = "DELETE FROM Directory WHERE ID = $id";
+    if ($con->query($sql) === TRUE) {
+        echo "Запись успешно удалена";
+    } else {
+        echo "Ошибка при удалении записи: " . $con->error;
+    }
 }
 
-/**
- * Выбирает запись из базы данных по ее id
- *
- * @param mysqli $con соединение с базой данных
- * @param string $id id записи
- *
- * @return array данные записи
- */
 function get_directory_by_id(mysqli $con, int $id)
 {
     $sql = 'SELECT * FROM `Directory`
@@ -60,23 +30,6 @@ function get_directory_by_id(mysqli $con, int $id)
 }
 
 /**
- * Удаляет запись из базы данных по ее id
- *
- * @param mysqli $con соединение с базой данных
- * @param string $id id записи
- *
- */
-function delete_row($id, $con)
-{
-    $sql = "DELETE FROM Directory WHERE ID = $id";
-    if ($con->query($sql) === TRUE) {
-        echo "Запись успешно удалена";
-    } else {
-        echo "Ошибка при удалении записи: " . $con->error;
-    }
-}
-
-/**
  * Изменяет запись в бд
  * 
  * @param mysqli $con подключение к базе
@@ -87,7 +40,7 @@ function delete_row($id, $con)
  *
  * @return int id добавленной записи
  */
-function update_directory(int $id, string $name, string $number, string $description, mysqli $con): int
+function update_directory(string $name, string $number, string $description, int $id, mysqli $con): int
 {
     $sql = "UPDATE Directory
             SET Name='?', PhoneNumber ='?', Description = '?'
