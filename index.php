@@ -58,6 +58,7 @@ require_once('init.php');
         <div class="content-center">
             <div class="login-form">
                 <form class="edit-form">
+                    <input typr="hidden" value="add/edit">
                     <label for="name">ФИО:</label>
                     <input type="name" id="name" name="name" placeholder="Введите ФИО">
                     <label for="number">Телефон:</label>
