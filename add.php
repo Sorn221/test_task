@@ -1,13 +1,12 @@
 <?php
 require_once('init.php');
 
-
 $name = $_POST['name'];
-$phoneNumber = $_POST['number'];
+$number = $_POST['number'];
 $description = $_POST['description'];
-$id = $_POST['id'];
 
-$sql = "UPDATE Directory SET Name='$name', PhoneNumber='$phoneNumber', Description='$description' WHERE id='$id'";
+$sql = "INSERT INTO Directory (Name, PhoneNumber, Description) VALUES ('$name', '$number','$description')";
+
 $con->query($sql);
 
 //обновление таблицы html

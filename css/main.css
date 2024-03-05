@@ -26,13 +26,14 @@ td {
 .add-button {
     margin-top: 10px;
 }
-.modal,
-.modal-background{
+.modal{
     display: none;
     position: absolute;
 }
 
-
+.form-type{
+    display: none;
+}
 
 .content-center{
     display: flex;
@@ -68,4 +69,7 @@ td {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.form-error{
+    display: none;
 }
